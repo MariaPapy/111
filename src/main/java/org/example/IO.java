@@ -1,52 +1,63 @@
 package org.example;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-
-public class IO implements FileInterface{
+@Getter
+public class IO implements FilleInterface{
+    String nameLastFile;
     @Override
     public void createLog() {
         File log = new File("log");
-        if (!log.exists()){
+        if (!log.exists()) {
             log.mkdir();
         }
     }
 
+    public String genarateFileName(){
+        return "log/log_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyy")) + ".txt";
+    }
     @Override
-    public void writeFile(String name, String str) {
+    public void writeFile(String str, String name) {
         cleanLogDirectory();
-        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern(""));
-        String filename = "log" + timestamp + ".txt";
-        PrintWriter writer = null;
         try {
-            writer = new PrintWriter(filename, "UTF-8");
-        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            FileWriter fileWriter = new FileWriter(name);
+            fileWriter.write(str);
+            fileWriter.close();
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        writer.println(str);
-        writer.close();
     }
 
     @Override
     public void cleanLogDirectory() {
-
         File logDir = new File("log");
         File[] files = logDir.listFiles();
-        if (files != null && files.length > 2) {
+        if (files != null && files.length > 1) {
             Arrays.stream(files)
                     .sorted((f1, f2) -> Long.compare(f2.lastModified(), f1.lastModified()))
-                    .skip(2)
+                    .skip(1)
                     .forEach(File::delete);
         }
     }
 
     @Override
     public String readFile(String name) {
-        return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            FileReader fileReader = new FileReader(name);
+            int ch ;
+            while ((ch = fileReader.read()) != -1) {
+                stringBuilder.append((char) ch);
+            }
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
     }
 }

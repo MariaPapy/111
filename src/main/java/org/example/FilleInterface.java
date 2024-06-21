@@ -1,8 +1,10 @@
 package org.example;
 
-public interface FileInterface {
+public interface FilleInterface {
     void createLog();
-    void writeFile(String name, String str);
+
+    void writeFile(String str, String name);
+
     void cleanLogDirectory();
     String readFile(String name);
 }
