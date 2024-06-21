@@ -16,4 +16,5 @@ class IOTest {
         String s = io.readFile("test.txt");
         assertEquals("DataContainer(year=20, name=Mari, status=true)", s);
     }
+
 }
