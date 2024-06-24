@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ReflectionTaskClassTest {
 
-
     @org.junit.jupiter.api.Test
     void createClass() throws InvocationTargetException, IllegalAccessException, InstantiationException {
         ReflectionSolve rt = new ReflectionSolve();

@@ -2,7 +2,6 @@ package org.example;
 
 import lombok.NonNull;
 
-
 @CustomAnnotations(daysWeek = 1)
 abstract class ParentClass{
     abstract void method(@NonNull DataContainer dataContainer);
