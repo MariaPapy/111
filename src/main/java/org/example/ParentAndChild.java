@@ -8,7 +8,6 @@ abstract class ParentClass{
     abstract void method1(@NonNull DataContainer dataContainer);
 }
 
-
 class DaughterClass1 extends ParentClass{
     @MyAnnotations2(hour = 11, description = "приоритет 2", priority = 2)
     public void method(@NonNull DataContainer dataContainer){

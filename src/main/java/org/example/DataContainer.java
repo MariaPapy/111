@@ -2,7 +2,6 @@ package org.example;
 
 import lombok.*;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

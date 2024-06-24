@@ -1,6 +1,5 @@
 package org.example;
 
-
 public interface FilleInterface {
     void createLog();
 

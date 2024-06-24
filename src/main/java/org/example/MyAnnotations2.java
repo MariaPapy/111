@@ -2,7 +2,6 @@ package org.example;
 
 import java.lang.annotation.*;
 
-
 @Repeatable(MyAnnotation2.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
