@@ -6,7 +6,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 class IOTest {
 
     @Test

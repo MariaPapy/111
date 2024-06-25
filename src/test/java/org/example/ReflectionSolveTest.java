@@ -4,7 +4,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 class ReflectionTaskClassTest {
 
     @org.junit.jupiter.api.Test
